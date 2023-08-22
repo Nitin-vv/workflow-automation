@@ -1,0 +1,18 @@
+.example-boundary {
+  width: 100%;
+  height: auto;
+  padding: 100px;
+}
+
+.zoom-controls {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mat-icon {
+    font-size: 30px;
+    margin-left: 12px;
+    cursor: pointer;
+  }
+}

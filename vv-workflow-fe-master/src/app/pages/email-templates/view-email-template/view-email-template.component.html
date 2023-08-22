@@ -1,0 +1,20 @@
+<div class="flex justify-between items-center font-bold my-4">
+  <div>View Email Template</div>
+  <div mat-dialog-close><mat-icon>close</mat-icon></div>
+</div>
+<div class="m-4">
+  <div class="my-4">
+    <div class="font-medium">Title</div>
+    <div>{{data?.row?.title}}</div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="my-4">
+    <div class="font-medium">Subject</div>
+    <div>{{data?.row?.subject}}</div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="my-4">
+    <div class="font-medium">Body</div>
+    <div [innerHTML]="data?.row?.body"></div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="flex justify-between items-center my-2 font-bold">
+  <div *ngIf="!isEdit">Add New Property</div>
+  <div *ngIf="isEdit">Edit Property</div>
+  <div mat-dialog-close><mat-icon>close</mat-icon></div>
+</div>
+<div class="mx-2">
+  <form [formGroup]="propertyForm">
+    <div>
+      <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Type</mat-label>
+        <mat-select placeholder="Select Type" formControlName="type">
+          <mat-option *ngFor="let property of propertyType" [value]="property.id">{{property.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="propertyForm.controls['type'].value == 9">
+      <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Regex</mat-label>
+        <input matInput placeholder="Regex" formControlName="regex">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox class="mx-2" formControlName="status"></mat-checkbox>
+      <mat-label class="mx-4">Active</mat-label>
+    </div>
+    <div class="my-6">
+      <button mat-raised-button mat-dialog-close>Cancel</button>
+      <button class="mx-4" mat-raised-button (click)="addProperty()" color="primary">
+        {{ isEdit ? 'Update' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

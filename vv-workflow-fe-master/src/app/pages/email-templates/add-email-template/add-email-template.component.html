@@ -1,0 +1,35 @@
+<div class="flex justify-between items-center font-bold my-4">
+  <div *ngIf="!isEdit">Add Email Template</div>
+  <div *ngIf="isEdit">Edit Email Template</div>
+  <div mat-dialog-close><mat-icon>close</mat-icon></div>
+</div>
+<div>
+  <form [formGroup]="emailForm">
+    <div>
+      <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Title">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="w-full" appearance="outline">
+      <mat-label>Subject</mat-label>
+        <input matInput formControlName="subject" placeholder="Subject">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-label>Body</mat-label>
+      <quill-editor formControlName="body" (input)="updateTemplateCount()"></quill-editor>
+    </div>
+    <div class="flex justify-end">
+      <div class="flex">
+        <h3 class="template-count text-xs font-medium">{{ templateCount }} / 200</h3>
+      </div>
+    </div>
+    <div class="my-6">
+      <button mat-raised-button mat-dialog-close (click)="cancel()">Cancel</button>
+      <button mat-raised-button class="mx-4" color="primary"
+        (click)="addSmsTemplates()">{{isEdit ? "Update":"Save"}}</button>
+    </div>
+  </form>
+</div>

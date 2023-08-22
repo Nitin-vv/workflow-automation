@@ -1,0 +1,59 @@
+<mat-card>
+  <div fxLayout="row wrap" fxLayout.lt-sm="column">
+    <div fxFlex="100" class="pr-1">
+      <h4 class="title title-header">Enrollment Trigger</h4>
+    </div>
+    <div class="trigger-l">
+      <div fxLayout="row wrap" fxLayout.lt-sm="column">
+        <div fxFlex="100" class="box" *ngFor="let triggerdata of triggers; let i = index;">
+          <div class="box-h">
+            <!-- ADD SINGLE CONDITION START -->
+            <mat-card class="mt-2">
+              Type
+              <!-- <b> {{ triggerdata.type.value}} </b> -->
+              <b> {{ triggerdata?.property?.title }}</b>
+              {{triggerdata?.condition?.value }}
+              <b>{{triggerdata?.condition_value}} </b>
+              <mat-icon svgIcon="mat:edit" class="icons" matTooltip="Edit Trigger" matTooltipPosition="after"
+                (click)="editTrigger(triggerdata, 0, i)"></mat-icon>
+              <!-- <mat-icon svgIcon="mat:delete"></mat-icon> -->
+            </mat-card>
+            <!-- ADD SINGLE CONDITION END -->
+            <!-- ADD MULTI CONDITION START -->
+            <div *ngIf="triggerdata.multivalue?.length">
+              <div class="box-mt" *ngFor="let mulival of triggerdata.multivalue; let x = index;">
+                <p class="uppercase">{{ mulival?.conditionname }}</p>
+                <mat-card class="mt-2">
+                  Type
+                  <!-- <b> {{ mulival.type.value}} </b> -->
+                  <b> {{ mulival?.property?.title }}</b>
+                  {{mulival?.condition?.value }}
+                  <b>{{mulival?.condition_value}} </b>
+                  <div class="condition-icon">
+                    <mat-icon svgIcon="mat:edit" class="icons" matTooltip="Edit Trigger" matTooltipPosition="after"
+                      (click)="editTrigger(mulival, 1, x)"></mat-icon>
+                    <mat-icon svgIcon="mat:delete" class="icons" matTooltip="Delete Trigger" matTooltipPosition="after"
+                      (click)="deleteTrigger(1, x)"></mat-icon>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
+            <!-- ADD MULTI CONDITION END -->
+
+            <!-- <div class="condition-btn mt-3">
+              <button mat-button mat-raised-button type="button" color="primary" class="ml-4"
+                matTooltip="Add AND Condition" (click)="onAddcondition('AND',triggers[i].type.id, i)">AND</button>
+              <button mat-button mat-raised-button type="button" color="primary" matTooltip="Add OR Condition"
+                (click)="onAddcondition('OR',triggers[i].type.id, i)">OR</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<div class="line-div here">
+  <button class="ml-4 flex-none" (click)="action()" color="primary" mat-mini-fab matTooltip="Add Action" type="button">
+    <mat-icon svgIcon="mat:add"></mat-icon>
+  </button>
+</div>

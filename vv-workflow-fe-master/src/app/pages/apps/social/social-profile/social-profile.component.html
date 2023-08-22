@@ -1,0 +1,35 @@
+<div class="mt-6 flex flex-col md:flex-row md:items-start">
+  <div class="flex-auto">
+    <div class="card">
+      <div class="px-gutter py-4 border-b">
+        <h2 class="title m-0">About</h2>
+      </div>
+      
+      <form [formGroup]="profileForm">
+        <div class="px-gutter py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="py-3 flex items-center">
+            <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Full Name</mat-label>
+                <input matInput formControlName="fullname" placeholder="Enter full name">
+              </mat-form-field>
+          </div>
+  
+          <div class="py-3 flex items-center">
+            <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Enter email">
+              </mat-form-field>
+          </div>
+  
+          <div class="py-3 flex items-center">
+            <mat-form-field class="w-full" appearance="outline">
+              <mat-label>Role</mat-label>
+                <input matInput formControlName="role" placeholder="Enter role">
+              </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="flex justify-between items-center font-bold m-40 border-b-2 pb-2">
+  <div class="text-xl">Workflow</div>
+  <div>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded mx-6" [routerLink]="'/workflows'">
+      <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <button *ngIf="triggers.length != 1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      type="button" [disabled]="edit || triggers.length == 1" (click)="addTrigger()">
+      Add Workflow
+    </button>
+    <button *ngIf="!edit && triggers.length >0 "
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button"
+      (click)="saveWorkflow()">
+      Save Workflow
+    </button>
+    <button *ngIf="edit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button"
+      (click)="updateWorkflow()">
+      Update Workflow
+    </button>
+  </div>
+</div>
+
+<div class="example-boundary border-2">
+  <div cdkDragBoundary=".example-boundary" cdkDrag class="cdkDrag relative">
+    <div #container></div>
+  </div>
+</div>
+<div class="zoom-controls" *ngIf="triggers.length > 0">
+  <mat-icon class="zoom zoom-in" (click)="zoomIn()" matTooltip="Zoom in">add</mat-icon>
+  <mat-icon class="zoom zoom-out" (click)="zoomOut()" matTooltip="Zoom out">remove</mat-icon>
+  <mat-icon class="zoom zoom-reset" (click)="resetZoom()" matTooltip="Reset zoom">refresh</mat-icon>
+</div>

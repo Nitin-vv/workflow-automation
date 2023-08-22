@@ -1,0 +1,23 @@
+div.line-div {
+  // width: 60%;
+  height: 100px;
+  position: relative;
+  text-align: center;
+  text-align: -webkit-center;
+
+  button {
+    top: 35px;
+    right: 8px;
+    z-index: 1;
+  }
+}
+
+.here:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 3px solid #b0a8ba;
+  transform: translate(-50%);
+}

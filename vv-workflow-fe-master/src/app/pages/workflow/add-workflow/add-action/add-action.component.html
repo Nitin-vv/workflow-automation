@@ -1,0 +1,27 @@
+<div class="text-xl">{{data?.title}}</div>
+<form class="px-2 pt-4 pb-0 flex flex-col" [formGroup]="actionForm">
+  <mat-label>Select Actions</mat-label>
+  <mat-form-field appearance="outline" class="vex-flex-form-field" color="primary">
+    <mat-select formControlName="action" placeholder="Select Action" (selectionChange)="onActionChange($event)"
+      (infiniteScroll)="getNextActionBatch()" [complete]="isCompleteAction$ | async" msInfiniteScroll>
+      <mat-option value="{{ item.title }}" *ngFor="let item of actionOptions$ | async">{{ item.title }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-container *ngIf="actionForm.get('action').value == 'Email Action'">
+    <mat-label>Choose Email</mat-label>
+    <mat-form-field appearance="outline" class="vex-flex-form-field" color="primary">
+      <mat-select formControlName="email" placeholder="Choose Email" (infiniteScroll)="getNextEmailBatch()"
+        [complete]="isCompleteEmail$ | async" msInfiniteScroll>
+        <mat-option value="{{ item.id }}" *ngFor="let item of emailOptions$ | async">{{ item.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+</form>
+<div class="my-4 flex justify-end">
+  <button mat-raised-button mat-dialog-close class="mr-4" (click)="cancelAction()">Cancel</button>
+  <button mat-raised-button class="text-white mr-4 bg-primary"
+    (click)="saveAction()">{{edit ? 'Update': 'Save'}}</button>
+</div>

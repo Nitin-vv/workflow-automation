@@ -1,0 +1,33 @@
+<div class="text-xl">{{data.title}}</div>
+<form class="px-2 pt-4 pb-0 flex flex-col" [formGroup]="triggerForm">
+  <mat-label>Select Property</mat-label>
+  <mat-form-field appearance="outline" class="vex-flex-form-field" color="primary">
+    <mat-select formControlName="property" placeholder="Select Property" (infiniteScroll)="getNextPropertyBatch()"
+      [complete]="isComplete$ | async" msInfiniteScroll>
+      <mat-option value="{{ item.id }}" *ngFor="let item of options$ | async">{{ item.title }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-container *ngIf="triggerForm.get('property').value !== null">
+    <mat-label>Conditions</mat-label>
+    <mat-form-field appearance="outline" class="vex-flex-form-field" color="primary">
+      <mat-select placeholder="Select Condition" formControlName="condition">
+        <mat-option [value]="item.id" *ngFor="let item of conditionList">{{item.value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-container *ngIf="triggerForm.get('condition').value == 1 || triggerForm.get('condition').value == 2">
+    <mat-label>Value</mat-label>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Enter Value" formControlName="conditionvalue">
+    </mat-form-field>
+  </ng-container>
+
+</form>
+<div class="my-4 flex justify-end">
+  <button mat-raised-button class="mr-4" mat-dialog-close>Cancel</button>
+  <button mat-raised-button class="text-white mr-4 bg-primary"
+    (click)="saveTrigger()">{{updateData?'Update':'Save' }}</button>
+</div>

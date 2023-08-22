@@ -1,0 +1,19 @@
+<div class="flex justify-between items-center font-bold my-4">
+  <div>View SMS Template</div>
+  <div mat-dialog-close><mat-icon>close</mat-icon></div>
+</div>
+<div class="m-4">
+  <div class="my-4">
+    <div class="font-medium">Title</div>
+    <div>{{data?.row?.title}}</div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="my-4">
+    <div class="font-medium">Type</div>
+    <div>{{property[data?.row?.type]}}</div>
+  </div>
+  <div *ngIf="data?.row?.regex" class="my-4">
+    <div class="font-medium">Regex</div>
+    <div>{{data?.row?.regex}}</div>
+  </div>
+</div>

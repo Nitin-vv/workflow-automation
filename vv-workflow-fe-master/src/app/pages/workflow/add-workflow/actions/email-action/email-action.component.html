@@ -1,0 +1,28 @@
+<!-- EMAIL ACTION SECTION -->
+
+<mat-card>
+  <div fxLayout="row wrap" fxLayout.lt-sm="column">
+    <div fxFlex="100" class="pr-1 box-title">
+      <h4 class="title title-header">{{data?.name}}
+        <span class="header-icons">
+          <mat-icon svgIcon="mat:delete" matTooltip="Delete Email Action" matTooltipPosition="after" class="icons"
+            (click)="deleteaction(data)"></mat-icon>
+          <mat-icon svgIcon="mat:edit" matTooltip="Edit Email Action" matTooltipPosition="after" class="icons"
+            (click)="editAction(data)"></mat-icon>
+        </span>
+      </h4>
+    </div>
+
+    <div fxFlex="100" class="box">
+      <span class="box-h">
+        <b>{{ data?.email?.title }}</b>
+      </span>
+    </div>
+  </div>
+</mat-card>
+<div class="line-div here">
+  <button class="ml-4 flex-none" (click)="action(data)" color="primary" mat-mini-fab matTooltip="Add Action"
+    type="button">
+    <mat-icon svgIcon="mat:add"></mat-icon>
+  </button>
+</div>
